@@ -1,0 +1,187 @@
+body{
+    --container-bg: rgb(100% 100% 100% / .3);
+    --accent-vibrant: oklch(0.446 0.1 262);
+    --accent-bright: oklch(0.346 0.069 262);
+    --target-color: oklch(90% .5 90);
+    --text-color: oklch(91% .05 247);
+    font-size: 20px;
+    margin: 0;
+    font-family: 'Geologica', sans-serif;
+    color: var(--text-color);
+}
+.example{
+    padding: 1em;
+    padding-bottom: 10em;
+    background-image: 
+    linear-gradient(
+      250deg in oklab, 
+      var(--accent-bright) 0%, var(--accent-vibrant) 100%
+    )
+  ;
+}
+.container{
+    background: var(--container-bg);
+    margin-bottom: 1em;
+    padding: .5em;
+    box-sizing: border-box;
+    border: 1pt dashed var(--text-color)
+}
+
+/* Width */
+#width .container{
+    container: exWidth / inline-size;
+}
+@container exWidth (width > 300px){
+    *{
+        color: var(--target-color);
+    }
+}
+@container toc (width > 300px){
+    a[data-name='width'] {
+        color: var(--target-color);
+        background: var(--accent-vibrant);
+    }
+}
+/* min-width */
+#min-width .container{
+    container: exMinWidth / inline-size;
+}
+
+@container exMinWidth (min-width: 300px){
+    *{
+        color: var(--target-color);
+    }
+}
+@container toc (min-width: 300px){
+    a[data-name='min-width'] {
+        color: var(--target-color);
+        background: var(--accent-vibrant);
+    }
+}
+/* max-width */
+#max-width .container{
+    container: exMaxWidth / inline-size;
+}
+
+@container exMaxWidth (max-width: 300px){
+    *{
+        color: var(--target-color);
+    }
+}
+@container toc (max-width: 300px){
+    a[data-name='max-width'] {
+        color: var(--target-color);
+        background: var(--accent-vibrant);
+    }
+}
+/* relative-width */
+#relative-width .container{
+    container: exRelativeWidth / inline-size;
+}
+
+@container exRelativeWidth (width > 15em){
+    *{
+        color: var(--target-color);
+    }
+}
+@container toc (width > 15em){
+    a[data-name='relative-width'] {
+        color: var(--target-color);
+        background: var(--accent-vibrant);
+    }
+}
+/* height */
+#height .container{
+    container: exHeight / size;
+}
+
+@container exHeight (height > 30px){
+    *{
+        color: var(--target-color);
+    }
+}
+@container toc (height > 30px){
+    a[data-name='height'] {
+        color: var(--target-color);
+        background: var(--accent-vibrant);
+    }
+}
+/* orientation */
+#orientation-portrait .container{
+    container: exOrientation / size;
+}
+
+@container exOrientation (orientation: portrait){
+    *{
+        color: var(--target-color);
+    }
+}
+@container toc (orientation: portrait){
+    a[data-name='orientation-portrait'] {
+        color: var(--target-color);
+        background: var(--accent-vibrant);
+    }
+}
+
+/* orientation-landscape */
+#orientation-landscape .container{
+    container: exOrientationLandscape / size;
+}
+
+@container exOrientationLandscape (orientation: landscape){
+    *{
+        color: var(--target-color);
+    }
+}
+@container toc (orientation: landscape){
+    a[data-name='orientation-landscape'] {
+        color: var(--target-color);
+        background: var(--accent-vibrant);
+    }
+}
+
+/* percentage-width */
+#percentage-width .container{
+    container: exPercentageWidth / inline-size;
+}
+
+@container exPercentageWidth (width > 33vw){
+    *{
+        color: var(--target-color);
+    }
+}
+@container toc (width > 33vw){
+    a[data-name='percentage-width'] {
+        color: var(--target-color);
+        background: var(--accent-vibrant);
+    }
+}
+
+
+
+
+#toc-wrapper{
+    position: sticky;
+    top: 0;
+    background: rgb(100% 100% 100% /.7);
+    min-width: 10em;
+    min-height: 10em;
+    z-index: 1;
+    float: right;
+    padding: 1em;
+    border-bottom-left-radius: .5em;
+    resize: both;
+    overflow: auto;
+    direction: rtl;
+    container: toc / size;
+    color: var(--accent-vibrant);
+}
+#toc-wrapper h1{
+    margin: 0;
+}
+#toc{
+    list-style: none;
+    padding-inline-start: 0;
+    margin: 0;
+    direction: ltr;
+}

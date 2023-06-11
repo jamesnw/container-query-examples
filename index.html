@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cqex</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="toc-wrapper">
+        <h1>cqex</h1>
+        <small>container query examples by <a href="https://jamessw.com" target="_blank">James</a></small>
+        <ul id="toc"></ul>
+    </div>
+    <div class="example" id="width">
+        <h2>@container (width > 300px)</h2>
+        <div class="container">
+            <span class="style">width:200px</span>
+        </div>
+        <div class="container">
+            <span class="style">width:400px</span>
+        </div>
+    </div>
+    <div class="example" id="min-width">
+        <h2>@container (min-width: 300px)</h2>
+        <p>Note: min-width is not part of the spec</p>
+        <div class="container">
+            <span class="style">width:200px</span>
+        </div>
+        <div class="container">
+            <span class="style">width:400px</span>
+        </div>
+    </div>
+    <div class="example" id="max-width">
+        <h2>@container (max-width: 300px)</h2>
+        <p>Note: max-width is not part of the spec</p>
+        <div class="container">
+            <span class="style">width:200px</span>
+        </div>
+        <div class="container">
+            <span class="style">width:400px</span>
+        </div>
+    </div>
+    <div class="example" id="relative-width">
+        <h2>@container (width > 15em)</h2>
+        <div class="container">
+            <span class="style">width:200px</span>
+        </div>
+        <div class="container">
+            <span class="style">width:400px</span>
+        </div>
+        <div class="additional-info">The font size for the page is 20px, so 1em is 20px. That means 15em = 300px.</div>
+    </div>
+    <div class="example" id="height">
+        <h2>@container (height > 30px)</h2>
+        <div class="container">
+            <span class="style">height:20px</span>
+        </div>
+        <div class="container">
+            <span class="style">height:30px</span>
+        </div>
+        <div class="container">
+            <span class="style">height:60px</span>
+        </div>
+        <div class="additional-info">Height must use the <code>size</code> container-type.</div>
+    </div>
+    <div class="example" id="orientation-portrait">
+        <h2>@container (orientation: portrait)</h2>
+        <div class="container">
+            <span class="style">height:100px;width:200px</span>
+        </div>
+        <div class="container">
+            <span class="style">height:100px;width:100px</span>
+        </div>
+        <div class="container">
+            <span class="style">height:200px;width:100px;</span>
+        </div>
+        <div class="additional-info">Requires the <code>size</code> container-type.</div>
+    </div>
+    <div class="example" id="orientation-landscape">
+        <h2>@container (orientation: landscape)</h2>
+        <div class="container">
+            <span class="style">height:100px;width:200px</span>
+        </div>
+        <div class="container">
+            <span class="style">height:100px;width:100px</span>
+        </div>
+        <div class="container">
+            <span class="style">height:200px;width:100px;</span>
+        </div>
+        <div class="additional-info">Requires the <code>size</code> container-type.</div>
+    </div>
+    <div class="example" id="percentage-width">
+        <h2>@container (width > 33vw)</h2>
+        <div class="container">
+            <span class="style">width:500px</span>
+        </div>
+        <div class="container">
+            <span class="style">width:100px;</span>
+        </div>
+        <div class="additional-info">I'm unclear how this is useful, </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
