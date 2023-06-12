@@ -22,6 +22,7 @@
           <a href="https://jamessw.com" target="_blank">James</a></small
         >
         <ul id="toc"></ul>
+        <a href="#query-match">Query Match</a>
         <div id="pin-wrapper"><input type="checkbox" id="pin" />📌</div>
       </div>
     </div>
@@ -42,7 +43,6 @@
         @container (<span class="query">min-width: 500px</span>) -
         <span class="type">inline-size</span>
       </h2>
-      <p>Note: min-width is not part of the spec</p>
       <div class="container">
         <span class="style">width:200px</span>
       </div>
@@ -55,7 +55,6 @@
         @container (<span class="query">max-width: 500px</span>) -
         <span class="type">inline-size</span>
       </h2>
-      <p>Note: max-width is not part of the spec</p>
       <div class="container">
         <span class="style">width:200px</span>
       </div>
@@ -97,7 +96,8 @@
         <span class="style">height:60px</span>
       </div>
       <div class="additional-info">
-        Height must use the <code>size</code> container-type to query the block axis (vertical in horizontal writing mode).
+        Height must use the <code>size</code> container-type to query the block
+        axis (vertical in horizontal writing mode).
       </div>
     </div>
     <div class="example" id="orientationPortrait">
@@ -115,7 +115,10 @@
         <span class="style">height:200px;width:100px;</span>
       </div>
       <div class="additional-info">
-        Square containers (height = width) are defiined as portrait for the purpose of container queries. I'm unsure if there is a way to have a container query match only square containers.
+        Square containers (height = width) are defiined as portrait for the
+        purpose of container queries. Use
+        <a href="#aspectRatioSquare">aspect-ratio: 1/1</a> to target only
+        squares.
       </div>
     </div>
     <div class="example" id="orientationLandscape">
@@ -144,9 +147,45 @@
       <div class="container">
         <span class="style">width:100px;</span>
       </div>
-      <div class="additional-info">This is a bit of an odd container query, as it is evaluated relative to the document, somewhat diminishing its usefulness.</div>
+      <div class="additional-info">
+        This is a bit of an odd container query, as it is evaluated relative to
+        the document, somewhat diminishing its usefulness.
+      </div>
     </div>
-
+    <div class="example" id="aspectRatio">
+      <h2>
+        @container (<span class="query">aspect-ratio: 1/2</span>) -
+        <span class="type">size</span>
+      </h2>
+      <div class="container">
+        <span class="style">width:100px;height:200px;</span>
+      </div>
+      <div class="container">
+        <span class="style">width:200px;height:100px;</span>
+      </div>
+    </div>
+    <div class="example" id="aspectRatioSquare">
+      <h2>
+        @container (<span class="query">aspect-ratio: 1/1</span>) -
+        <span class="type">size</span>
+      </h2>
+      <div class="container">
+        <span class="style">width:100px;height:200px;</span>
+      </div>
+      <div class="container">
+        <span class="style">width:200px;height:200px;</span>
+      </div>
+      <div class="container">
+        <span class="style">width:200px;height:100px;</span>
+      </div>
+    </div>
+    <div id="query-match">
+      <div id="radio-wrapper">
+        <div id="radio"></div>
+        <div class="match-indicator" id="yes">Match!</div>
+        <div class="match-indicator" id="no">No match!</div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
