@@ -16,7 +16,7 @@
             <h1>cqex</h1>
             <small>container query examples by <a href="https://jamessw.com" target="_blank">James</a></small>
             <ul id="toc"></ul>
-            <input type="checkbox" id="pin"/>Pin
+            <div id="pin-wrapper"><input type="checkbox" id="pin"/>📌</div>
         </div>
     </div>
     <div class="example" id="width">
@@ -29,23 +29,23 @@
         </div>
     </div>
     <div class="example" id="min-width">
-        <h2>@container (min-width: 300px)</h2>
+        <h2>@container (min-width: 500px)</h2>
         <p>Note: min-width is not part of the spec</p>
         <div class="container">
             <span class="style">width:200px</span>
         </div>
         <div class="container">
-            <span class="style">width:400px</span>
+            <span class="style">width:600px</span>
         </div>
     </div>
     <div class="example" id="max-width">
-        <h2>@container (max-width: 300px)</h2>
+        <h2>@container (max-width: 500px)</h2>
         <p>Note: max-width is not part of the spec</p>
         <div class="container">
             <span class="style">width:200px</span>
         </div>
         <div class="container">
-            <span class="style">width:400px</span>
+            <span class="style">width:600px</span>
         </div>
     </div>
     <div class="example" id="relative-width">
@@ -65,6 +65,9 @@
         </div>
         <div class="container">
             <span class="style">height:30px</span>
+        </div>
+        <div class="container">
+            <span class="style">height:31px</span>
         </div>
         <div class="container">
             <span class="style">height:60px</span>

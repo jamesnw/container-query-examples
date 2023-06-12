@@ -47,12 +47,12 @@ body{
     container: exMinWidth / inline-size;
 }
 
-@container exMinWidth (min-width: 300px){
+@container exMinWidth (min-width: 500px){
     *{
         color: var(--target-color);
     }
 }
-@container toc (min-width: 300px){
+@container toc (min-width: 500px){
     a[data-name='min-width'] {
         color: var(--target-color);
         background: var(--accent-vibrant);
@@ -63,12 +63,12 @@ body{
     container: exMaxWidth / inline-size;
 }
 
-@container exMaxWidth (max-width: 300px){
+@container exMaxWidth (max-width: 500px){
     *{
         color: var(--target-color);
     }
 }
-@container toc (max-width: 300px){
+@container toc (max-width: 500px){
     a[data-name='max-width'] {
         color: var(--target-color);
         background: var(--accent-vibrant);
@@ -164,12 +164,25 @@ body{
     align-content: center;
     justify-content: center;
     flex-wrap: wrap;
+    background-image: 
+    linear-gradient(
+      250deg in oklab, 
+      var(--accent-bright) 0%, var(--accent-vibrant) 100%
+    )
+}
+
+#toc-wrapper-wrapper:has(#pin:checked){
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 #toc-wrapper{
     background: var(--target-color);
     min-width: 10em;
     min-height: 10em;
+    height: 20em;
+    width: 20em;
     padding: 1em;
     resize: both;
     overflow: auto;
@@ -178,10 +191,7 @@ body{
     color: var(--accent-vibrant);
 }
 #toc-wrapper:has(#pin:checked){
-    position: sticky;
-    top: 0;
     background: rgb(100% 100% 100% /.7);
-    z-index: 1;
     float: right;
     border-bottom-left-radius: .5em;
     direction: rtl;
@@ -193,4 +203,14 @@ body{
     list-style: none;
     padding-inline-start: 0;
     margin: 0;
+    padding-top: 1em;
+}
+#pin-wrapper{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+#toc-wrapper:has(#pin:checked) #pin-wrapper{
+    right: inherit;
+    left: 0;
 }
