@@ -2,30 +2,56 @@
 // This allows us to display the text of the style without duplicating it in css.
 const containers = document.querySelectorAll('.container');
 
-Array.from(containers).forEach(container=>{
+Array.from(containers).forEach(container => {
     const styleEl = container.getElementsByClassName('style')?.[0];
-    if(styleEl){
+    if (styleEl) {
         container.setAttribute('style', styleEl.innerText);
     }
 })
 
 const examples = document.querySelectorAll('.example');
 
-const exampleInfo = Array.from(examples).map(example=>{
+const exampleInfo = Array.from(examples).map(example => {
     return {
-        name: example.querySelector('h2').innerText,
-        id: example.getAttribute('id')
+        name: example.querySelector('span.query').innerText,
+        id: example.getAttribute('id'),
+        type: example.querySelector('span.type').innerText
     }
 });
 const toc = document.getElementById('toc');
-exampleInfo.forEach(example=>{
+exampleInfo.forEach(example => {
     const anchor = document.createElement('a');
     anchor.href = `#${example.id}`;
     anchor.innerText = example.name;
     anchor.dataset.name = example.id;
     const li = document.createElement('li');
     li.append(anchor)
-    
+
     toc.append(li)
 });
 
+const styleElement = document.createElement('style');
+document.head.appendChild(styleElement);
+const { sheet } = styleElement;
+
+let containerStyles = '';
+exampleInfo.forEach(({ name, id, type }) => {
+    containerStyles = containerStyles + `
+#${id} .container{
+    container: ex${id} / ${type};
+}
+@container ex${id} (${name}){
+    *{
+        color: var(--target-color);
+    }
+}
+@container toc (${name}){
+    a[data-name='${id}'] {
+        color: var(--target-color);
+        background: var(--accent-vibrant);
+    }
+}
+    `
+})
+
+styleElement.innerHTML = containerStyles;

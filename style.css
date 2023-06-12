@@ -1,216 +1,85 @@
-body{
-    --container-bg: rgb(100% 100% 100% / .3);
-    --accent-vibrant: oklch(0.446 0.1 262);
-    --accent-bright: oklch(0.346 0.069 262);
-    --target-color: oklch(90% .5 90);
-    --text-color: oklch(91% .05 247);
-    font-size: 20px;
-    margin: 0;
-    font-family: 'Geologica', sans-serif;
-    color: var(--text-color);
+body {
+  --container-bg: rgb(100% 100% 100% / 0.3);
+  --accent-vibrant: oklch(0.446 0.1 262);
+  --accent-bright: oklch(0.346 0.069 262);
+  --target-color: oklch(90% 0.5 90);
+  --text-color: oklch(91% 0.05 247);
+  font-size: 20px;
+  margin: 0;
+  font-family: "Geologica", sans-serif;
+  color: var(--text-color);
 }
-.example{
-    padding: 1em;
-    padding-bottom: 10em;
-    background-image: 
-    linear-gradient(
-      250deg in oklab, 
-      var(--accent-bright) 0%, var(--accent-vibrant) 100%
-    )
-  ;
+.example {
+  padding: 1em;
+  padding-bottom: 10em;
+  background-image: linear-gradient(
+    250deg in oklab,
+    var(--accent-bright) 0%,
+    var(--accent-vibrant) 100%
+  );
 }
-.container{
-    background: var(--container-bg);
-    margin-bottom: 1em;
-    padding: .5em;
-    box-sizing: border-box;
-    border: 1pt dashed var(--text-color)
-}
-
-/* Width */
-#width .container{
-    container: exWidth / inline-size;
-}
-@container exWidth (width > 300px){
-    *{
-        color: var(--target-color);
-    }
-}
-@container toc (width > 300px){
-    a[data-name='width'] {
-        color: var(--target-color);
-        background: var(--accent-vibrant);
-    }
-}
-/* min-width */
-#min-width .container{
-    container: exMinWidth / inline-size;
+.container {
+  background: var(--container-bg);
+  margin-bottom: 1em;
+  padding: 0.5em;
+  box-sizing: border-box;
+  border: 1pt dashed var(--text-color);
+  box-sizing: content-box;
 }
 
-@container exMinWidth (min-width: 500px){
-    *{
-        color: var(--target-color);
-    }
-}
-@container toc (min-width: 500px){
-    a[data-name='min-width'] {
-        color: var(--target-color);
-        background: var(--accent-vibrant);
-    }
-}
-/* max-width */
-#max-width .container{
-    container: exMaxWidth / inline-size;
+#toc-wrapper-wrapper:not(:has(#pin:checked)) {
+  display: flex;
+  height: 100vh;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-image: linear-gradient(
+    250deg in oklab,
+    var(--accent-bright) 0%,
+    var(--accent-vibrant) 100%
+  );
 }
 
-@container exMaxWidth (max-width: 500px){
-    *{
-        color: var(--target-color);
-    }
-}
-@container toc (max-width: 500px){
-    a[data-name='max-width'] {
-        color: var(--target-color);
-        background: var(--accent-vibrant);
-    }
-}
-/* relative-width */
-#relative-width .container{
-    container: exRelativeWidth / inline-size;
+#toc-wrapper-wrapper:has(#pin:checked) {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
-@container exRelativeWidth (width > 15em){
-    *{
-        color: var(--target-color);
-    }
+#toc-wrapper {
+  background: var(--target-color);
+  min-width: 10em;
+  min-height: 10em;
+  height: 20em;
+  width: 20em;
+  padding: 1em;
+  resize: both;
+  overflow: auto;
+  container: toc / size;
+  direction: ltr;
+  color: var(--accent-vibrant);
 }
-@container toc (width > 15em){
-    a[data-name='relative-width'] {
-        color: var(--target-color);
-        background: var(--accent-vibrant);
-    }
+#toc-wrapper:has(#pin:checked) {
+  background: rgb(100% 100% 100% /0.7);
+  float: right;
+  border-bottom-left-radius: 0.5em;
+  direction: rtl;
 }
-/* height */
-#height .container{
-    container: exHeight / size;
+#toc-wrapper h1 {
+  margin: 0;
 }
-
-@container exHeight (height > 30px){
-    *{
-        color: var(--target-color);
-    }
+#toc {
+  list-style: none;
+  padding-inline-start: 0;
+  margin: 0;
+  padding-top: 1em;
 }
-@container toc (height > 30px){
-    a[data-name='height'] {
-        color: var(--target-color);
-        background: var(--accent-vibrant);
-    }
+#pin-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
-/* orientation */
-#orientation-portrait .container{
-    container: exOrientation / size;
-}
-
-@container exOrientation (orientation: portrait){
-    *{
-        color: var(--target-color);
-    }
-}
-@container toc (orientation: portrait){
-    a[data-name='orientation-portrait'] {
-        color: var(--target-color);
-        background: var(--accent-vibrant);
-    }
-}
-
-/* orientation-landscape */
-#orientation-landscape .container{
-    container: exOrientationLandscape / size;
-}
-
-@container exOrientationLandscape (orientation: landscape){
-    *{
-        color: var(--target-color);
-    }
-}
-@container toc (orientation: landscape){
-    a[data-name='orientation-landscape'] {
-        color: var(--target-color);
-        background: var(--accent-vibrant);
-    }
-}
-
-/* percentage-width */
-#percentage-width .container{
-    container: exPercentageWidth / inline-size;
-}
-
-@container exPercentageWidth (width > 33vw){
-    *{
-        color: var(--target-color);
-    }
-}
-@container toc (width > 33vw){
-    a[data-name='percentage-width'] {
-        color: var(--target-color);
-        background: var(--accent-vibrant);
-    }
-}
-
-
-#toc-wrapper-wrapper:not(:has(#pin:checked)){
-    display: flex;
-    height: 100vh;
-    align-content: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    background-image: 
-    linear-gradient(
-      250deg in oklab, 
-      var(--accent-bright) 0%, var(--accent-vibrant) 100%
-    )
-}
-
-#toc-wrapper-wrapper:has(#pin:checked){
-    position: sticky;
-    top: 0;
-    z-index: 1;
-}
-
-#toc-wrapper{
-    background: var(--target-color);
-    min-width: 10em;
-    min-height: 10em;
-    height: 20em;
-    width: 20em;
-    padding: 1em;
-    resize: both;
-    overflow: auto;
-    container: toc / size;
-    direction: ltr;
-    color: var(--accent-vibrant);
-}
-#toc-wrapper:has(#pin:checked){
-    background: rgb(100% 100% 100% /.7);
-    float: right;
-    border-bottom-left-radius: .5em;
-    direction: rtl;
-}
-#toc-wrapper h1{
-    margin: 0;
-}
-#toc{
-    list-style: none;
-    padding-inline-start: 0;
-    margin: 0;
-    padding-top: 1em;
-}
-#pin-wrapper{
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-#toc-wrapper:has(#pin:checked) #pin-wrapper{
-    right: inherit;
-    left: 0;
+#toc-wrapper:has(#pin:checked) #pin-wrapper {
+  right: inherit;
+  left: 0;
 }
