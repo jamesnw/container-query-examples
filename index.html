@@ -78,6 +78,22 @@
         300px.
       </div>
     </div>
+    <div class="example" id="percentageWidth">
+        <h2>
+          @container (<span class="query">width > 33vw</span>) -
+          <span class="type">size</span>
+        </h2>
+        <div class="container">
+          <span class="style">width:500px</span>
+        </div>
+        <div class="container">
+          <span class="style">width:100px;</span>
+        </div>
+        <div class="additional-info">
+          This is a bit of an odd container query, as it is evaluated relative to
+          the document, somewhat diminishing its usefulness.
+        </div>
+      </div>
     <div class="example" id="height">
       <h2>
         @container (<span class="query">height > 30px</span>) -
@@ -100,6 +116,21 @@
         axis (vertical in horizontal writing mode).
       </div>
     </div>
+    <div class="example" id="percentageHeight">
+        <h2>
+          @container (<span class="query">height > 100vh</span>) -
+          <span class="type">size</span>
+        </h2>
+        <div class="container">
+          <span class="style">height:20px</span>
+        </div>
+        <div class="container">
+          <span class="style">height:105vh</span>
+        </div>
+        <div class="additional-info">
+          This could be an interesting technique to show that content overflows and requires scrolling.
+        </div>
+      </div>
     <div class="example" id="orientationPortrait">
       <h2>
         @container (<span class="query">orientation: portrait</span>) -
@@ -134,22 +165,6 @@
       </div>
       <div class="container">
         <span class="style">height:200px;width:100px;</span>
-      </div>
-    </div>
-    <div class="example" id="percentageWidth">
-      <h2>
-        @container (<span class="query">width > 33vw</span>) -
-        <span class="type">size</span>
-      </h2>
-      <div class="container">
-        <span class="style">width:500px</span>
-      </div>
-      <div class="container">
-        <span class="style">width:100px;</span>
-      </div>
-      <div class="additional-info">
-        This is a bit of an odd container query, as it is evaluated relative to
-        the document, somewhat diminishing its usefulness.
       </div>
     </div>
     <div class="example" id="aspectRatio">
